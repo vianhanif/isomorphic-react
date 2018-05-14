@@ -7,9 +7,10 @@ module.exports = {
       separator: ' | '
     },
     description: 'Here is a pretty awesome meta tag description for my website.',
+    image: '/images/logo.svg'
   },
   url: {
-    default: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cra-ssr.herokuapp.com'
+    default: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://sample-isomorphic-react.herokuapp.com'
   },
   // Enable or disable server-side rendering
   enableSSR: true,

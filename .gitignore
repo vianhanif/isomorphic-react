@@ -1,4 +1,5 @@
 npm-error.log
+package-lock.json
 .env
 node_modules
 npm-debug.log*
@@ -8,6 +9,7 @@ npm-debug.log*
 /dist
 /build
 /src
+/webpack-assets.json
 /webpack-stats.json
 /react-loadable.json
 /*/**/__snapshots__

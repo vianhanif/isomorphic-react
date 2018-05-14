@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 const defaultUrl = config.url.default;
 const defaultTitle = config.meta.title.default;
 const defaultDescription = config.meta.title.description;
-const defaultImage = `${defaultUrl}/images/logo.jpg`;
+const defaultImage = `${defaultUrl}${config.meta.image}`;
 const defaultTwitter = config.meta.twitter;
 const defaultSep = config.meta.title.separator;
 
@@ -23,16 +23,15 @@ class Page extends Component {
       updated,
       category,
       tags
-    },
-    pathname
+    }
   ) {
     const theTitle = title
-      ? (title + defaultSep + defaultTitle).substring(0, 60)
+      ? title
       : defaultTitle;
     const theDescription = description
-      ? description.substring(0, 155)
+      ? description
       : defaultDescription;
-    const theImage = image ? image : defaultImage;
+    const theImage = image ? `${defaultUrl}${image}` : defaultImage;
 
     const metaTags = [
       { itemprop: 'name', content: theTitle },
@@ -47,7 +46,7 @@ class Page extends Component {
       { name: 'twitter:image:src', content: theImage },
       { property: 'og:title', content: theTitle },
       { property: 'og:type', content: contentType || 'website' },
-      { property: 'og:url', content: defaultUrl + pathname },
+      { property: 'og:url', content: defaultUrl },
       { property: 'og:image', content: theImage },
       { property: 'og:description', content: theDescription },
       { property: 'og:site_name', content: defaultTitle },
@@ -91,10 +90,10 @@ class Page extends Component {
           link={[
             {
               rel: 'canonical',
-              href: defaultUrl + this.props.location.pathname
+              href: defaultUrl
             }
           ]}
-          meta={this.getMetaTags(rest, this.props.location.pathname)}
+          meta={this.getMetaTags(rest)}
         />
         {children}
       </div>
